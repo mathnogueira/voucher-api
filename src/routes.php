@@ -10,3 +10,5 @@ $app->get("/", function (Request $request, Response $response) {
 });
 
 $app->post("$ROUTES_PREFIX/voucher", ['App\Controllers\VoucherController', 'generateVouchers']);
+
+$app->post("$ROUTES_PREFIX/recipient", ['App\Controllers\RecipientController', 'create']);

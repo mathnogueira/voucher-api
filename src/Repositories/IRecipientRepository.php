@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface IClientRepository
+interface IRecipientRepository
 {
     public function getAll();
 }

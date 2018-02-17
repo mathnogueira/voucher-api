@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-class ClientRepository implements IClientRepository
+class RecipientRepository implements IRecipientRepository
 {
     public function getAll()
     {

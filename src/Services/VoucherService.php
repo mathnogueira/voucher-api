@@ -3,34 +3,40 @@
 namespace App\Services;
 
 use App\Generators\IVoucherCodeGenerator;
-use App\Repositories\IClientRepository;
+use App\Repositories\IRecipientRepository;
 use App\Repositories\ISpecialOfferRepository;
+use App\Repositories\IVoucherRepository;
 
 class VoucherService
 {
     private $voucherCodeGenerator;
-    private $clientRepository;
+    private $recipientRepository;
     private $specialOfferRepository;
+    private $voucherRepository;
 
     public function __construct(
         IVoucherCodeGenerator $voucherCodeGenerator,
-        IClientRepository $clientRepository,
-        ISpecialOfferRepository $specialOfferRepository
+        IRecipientRepository $recipientRepository,
+        ISpecialOfferRepository $specialOfferRepository,
+        IVoucherRepository $voucherRepository
     ) {
         $this->voucherCodeGenerator = $voucherCodeGenerator;
-        $this->clientRepository = $clientRepository;
+        $this->recipientRepository = $recipientRepository;
         $this->specialOfferRepository = $specialOfferRepository;
+        $this->voucherRepository = $voucherRepository;
     }
 
     public function generateVouchersForSpecialOffer(string $specialofferCode)
     {
-        $allClients = $this->clientRepository->getAll();
+        $allClients = $this->recipientRepository->getAll();
         $specialOffer = $this->specialOfferRepository->getByCode($specialofferCode);
 
         $voucherList = [];
         foreach ($allClients as $client) {
             $voucherList[] = $this->createVoucher($client, $specialOffer);
         }
+
+
     }
 
     private function createVoucher($client, $specialOffer)
