@@ -2,7 +2,8 @@
 
 namespace App\Models\Validation;
 
-use App\Models\Validation\Validators;
+use App\Models\Validation\Validators\NotEmptyValidator;
+use App\Models\Validation\Validators\EmailValidator;
 
 class ValidatorFactory
 {
@@ -10,11 +11,11 @@ class ValidatorFactory
     {
         switch ($rule) {
             case 'not empty':
-                return new \NotEmptyValidator();
+                return new NotEmptyValidator();
             case 'valid email':
-                return new \EmailValidator();
+                return new EmailValidator();
             default:
-                throw new Exception("Validation rule \"$rule\" is not available.");
+                throw new \Exception("Validation rule \"$rule\" is not available.");
         }
     }
 }

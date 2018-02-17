@@ -9,10 +9,10 @@ class Recipient extends Model
 
     public $validations = [
         'name' => [
-            ['not empty', 'The recipient name cannot be empty']
+            ['not empty' => 'The recipient name cannot be empty']
         ],
         'email' => [
-            ['valid email', 'Recipient\'s email is invalid']
+            ['valid email' => 'Recipient\'s email is invalid']
         ]
     ];
     
@@ -23,13 +23,4 @@ class Recipient extends Model
         $this->seal();
     }
 
-    public function isValid()
-    {
-        return strlen($this->name) > 0 && $this->isEmailValid();
-    }
-
-    private function isEmailValid()
-    {
-        return filter_var($this->email, FILTER_VALIDATE_EMAIL);
-    }
 }

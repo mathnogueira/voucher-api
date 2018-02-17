@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS recipient;
 CREATE TABLE recipient (
     recipient_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(190) NOT NULL UNIQUE,
 
     PRIMARY KEY (recipient_id)
 );

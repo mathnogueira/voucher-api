@@ -23,6 +23,16 @@ class RecipientController
         $email = $requestBody['email'];
 
         $recipient = new Recipient($name, $email);
-        $this->recipientService->
+        try {
+            $this->recipientService->save($recipient);
+            return $response->withJson([
+                    'id' => $recipient->id,
+                    'type' => 'Recipient'
+            ], 201);
+        } catch (\App\Exceptions\InvalidModelException $ex) {
+            return $response->withJson(['Errors' => $ex->getErrors()], 400);
+        } catch (\App\Exceptions\ModelConflictException $ex) {
+            return $response->withJson(['Errors' => [$ex->getMessage()]], 409);
+        }
     }
 }
