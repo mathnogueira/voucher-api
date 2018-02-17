@@ -15,10 +15,7 @@ session_start();
 
 // Instantiate the app
 $settings = require __DIR__ . '/config/settings.php';
-$app = new \Slim\App($settings);
-
-// Set up dependencies
-require __DIR__ . '/config/dependencies.php';
+$app = new \App\Application($settings);
 
 // Register middleware
 require __DIR__ . '/config/middleware.php';
@@ -26,5 +23,9 @@ require __DIR__ . '/config/middleware.php';
 // Register routes
 require __DIR__ . '/src/routes.php';
 
-// Run app
-$app->run();
+try {
+    // Run app
+    $app->run();
+} catch (\Exception $ex) {
+    echo $ex->message;
+}

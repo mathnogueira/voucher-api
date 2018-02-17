@@ -1,15 +1,18 @@
 <?php
-// DIC configuration
 
-class Teste {
-    public function do() {
-        return "Done";
-    }
-}
+use function DI\object;
 
-$container = $app->getContainer();
+return [
+    // Generators
+    'App\Generators\IVoucherCodeGenerator' => object(App\Generators\VoucherCodeGenerator::class),
 
-$container["VoucherService"] = function($container) {
-    $voucherService = new Teste();
-    return $voucherService;
-};
+    // Services
+    'App\Services\VoucherService' => object(App\Services\VoucherService::class),
+
+    // Repositories
+    'App\Repositories\IClientRepository' => object(App\Repositories\ClientRepository::class),
+    'App\Repositories\ISpecialOfferRepository' => object(App\Repositories\SpecialOfferRepository::class),
+    
+    //Controllers
+    'App\Controllers\VoucherController' => object(App\Controllers\VoucherController::class)
+];
