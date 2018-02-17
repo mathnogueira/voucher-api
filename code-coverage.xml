@@ -1,0 +1,124 @@
+<?php
+$coverage = new SebastianBergmann\CodeCoverage\CodeCoverage;
+$coverage->setData(array (
+  '/home/matheus/Programming/php/voucher/src/settings.php' => 
+  array (
+    3 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+      2 => 'Tests\\Functional\\HomepageTest::testPostHomepageNotAllowed',
+    ),
+    14 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+      2 => 'Tests\\Functional\\HomepageTest::testPostHomepageNotAllowed',
+    ),
+    15 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+      2 => 'Tests\\Functional\\HomepageTest::testPostHomepageNotAllowed',
+    ),
+    16 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+    ),
+  ),
+  '/home/matheus/Programming/php/voucher/src/routes.php' => 
+  array (
+    10 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    13 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    14 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+      2 => 'Tests\\Functional\\HomepageTest::testPostHomepageNotAllowed',
+    ),
+  ),
+  '/home/matheus/Programming/php/voucher/src/dependencies.php' => 
+  array (
+    4 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+      2 => 'Tests\\Functional\\HomepageTest::testPostHomepageNotAllowed',
+    ),
+    8 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    9 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    10 => NULL,
+    14 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    15 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    16 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    17 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    18 => 
+    array (
+      0 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName',
+      1 => 'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting',
+    ),
+    19 => NULL,
+  ),
+  '/home/matheus/Programming/php/voucher/src/middleware.php' => 
+  array (
+  ),
+));
+$coverage->setTests(array (
+  'Tests\\Functional\\HomepageTest::testGetHomepageWithoutName' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Functional\\HomepageTest::testGetHomepageWithGreeting' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Functional\\HomepageTest::testPostHomepageNotAllowed' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+));
+
+$filter = $coverage->filter();
+$filter->setWhitelistedFiles(array (
+  '/home/matheus/Programming/php/voucher/src/dependencies.php' => true,
+  '/home/matheus/Programming/php/voucher/src/middleware.php' => true,
+  '/home/matheus/Programming/php/voucher/src/routes.php' => true,
+  '/home/matheus/Programming/php/voucher/src/settings.php' => true,
+));
+
+return $coverage;

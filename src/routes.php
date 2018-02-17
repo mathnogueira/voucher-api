@@ -3,12 +3,24 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-// Routes
+$ROUTES_PREFIX = "/api/v1.0";
 
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+$app->get("/", function (Request $request, Response $response, array $args) {
+    return "The application is running";
+});
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+$app->get("$ROUTES_PREFIX/voucher", function (Request $request, Response $response, array $args) {
+    return $response->withJson([
+        "Name" => "hello"
+    ]);
+});
+
+$app->get("$ROUTES_PREFIX/sale", function (Request $request, Response $response, array $args) {
+    $saleData = $request->getParsedBody();
+    $email = $saleData["email"];
+    $voucherCode = $saleData["voucher"];
+    $voucherService = $this->VoucherService;
+
+    $result = $this->VoucherService->use($voucherCode, $email);
+    return $response->withJson($result, 201);
 });
