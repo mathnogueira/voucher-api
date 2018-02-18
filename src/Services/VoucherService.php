@@ -6,6 +6,9 @@ use App\Generators\IVoucherCodeGenerator;
 use App\Repositories\IRecipientRepository;
 use App\Repositories\ISpecialOfferRepository;
 use App\Repositories\IVoucherRepository;
+use App\Models\Voucher;
+use App\Models\Recipient;
+use App\Models\SpecialOffer;
 
 class VoucherService
 {
@@ -28,20 +31,31 @@ class VoucherService
 
     public function generateVouchersForSpecialOffer(string $specialofferCode)
     {
-        $allClients = $this->recipientRepository->getAll();
         $specialOffer = $this->specialOfferRepository->getByCode($specialofferCode);
-
-        $voucherList = [];
-        foreach ($allClients as $client) {
-            $voucherList[] = $this->createVoucher($client, $specialOffer);
+        $recipients = $this->recipientRepository->getAllRecipientsDoesntHaveVoucherFor($specialOffer);
+        
+        foreach ($recipients as $index => $recipient) {
+            $voucher = $this->createVoucher($recipient, $specialOffer);
+            $this->voucherRepository->save($voucher);
         }
 
-
+        return count($recipients);
+        
     }
 
-    private function createVoucher($client, $specialOffer)
+    private function createVoucher(Recipient $recipient, SpecialOffer $specialOffer)
     {
-        $code = $this->voucherCodeGenerator->generate();
-        return new Voucher($code, $client, $specialOffer);
+        $code = $this->generateVoucherCode();
+        return new Voucher($code, $recipient->id, $specialOffer->id);
+    }
+
+    private function generateVoucherCode()
+    {
+        do {
+            $code = $this->voucherCodeGenerator->generate();
+            $voucher = $this->voucherRepository->getByCode($code);
+        } while ($voucher != null);
+
+        return $code;
     }
 }

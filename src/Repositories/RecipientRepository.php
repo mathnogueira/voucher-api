@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Recipient;
+use App\Models\SpecialOffer;
 use App\Utils\Database;
 
 class RecipientRepository implements IRecipientRepository
@@ -48,6 +49,26 @@ class RecipientRepository implements IRecipientRepository
 
         $row = $query->fetch(\PDO::FETCH_OBJ);
         return $this->buildRecipientFromRow($row);
+    }
+
+    public function getAllRecipientsDoesntHaveVoucherFor(SpecialOffer $specialOffer)
+    {
+        $sqlStatement = "
+            SELECT * FROM recipient WHERE recipient_id NOT IN (
+                SELECT recipient_id FROM `voucher` WHERE special_offer_id = :offerId
+            )";
+        
+        $recipients = [];
+        $specialOfferId = $specialOffer->id;
+        $sqlConnection = $this->database->getConnection();
+        $query = $sqlConnection->prepare($sqlStatement);
+        $query->execute([':offerId' => $specialOfferId]);
+
+        while ($row = $query->fetch(\PDO::FETCH_OBJ)) {
+            $recipients[] = $this->buildRecipientFromRow($row);
+        }
+
+        return $recipients;
     }
 
     private function buildRecipientFromRow($row)

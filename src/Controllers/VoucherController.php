@@ -18,10 +18,13 @@ class VoucherController
     public function generateVouchers(Request $request, Response $response)
     {
         $requestBody = $request->getParsedBody();
-        $specialOfferCode = $requestBody['specialOfferCode'];
+        $specialOfferCode = $requestBody['offerCode'];
 
-        $this->voucherService->generateVouchersForSpecialOffer($specialOfferCode);
+        $numberVouchersGenerated = $this->voucherService->generateVouchersForSpecialOffer($specialOfferCode);
 
-        return $response->withJson([], 201);
+        return $response->withJson([
+            'Created' => $numberVouchersGenerated,
+            'type' => 'Voucher'
+        ], 201);
     }
 }
