@@ -39,6 +39,17 @@ class RecipientRepository implements IRecipientRepository
         return $this->buildRecipientFromRow($row);
     }
 
+    public function getById(int $id)
+    {
+        $sqlConnection = $this->database->getConnection();
+
+        $query = $sqlConnection->prepare("SELECT * FROM recipient WHERE recipient_id = :id");
+        $query->execute([':id' => $id]);
+
+        $row = $query->fetch(\PDO::FETCH_OBJ);
+        return $this->buildRecipientFromRow($row);
+    }
+
     private function buildRecipientFromRow($row)
     {
         if (!$row) {

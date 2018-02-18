@@ -7,6 +7,7 @@ use App\Models\Recipient;
 use App\Models\Validation\ModelValidator;
 use App\Exceptions\InvalidModelException;
 use App\Exceptions\ModelConflictException;
+use App\Exceptions\ModelNotFoundException;
 
 class RecipientService
 {
@@ -19,6 +20,21 @@ class RecipientService
     ) {
         $this->recipientRepository = $recipientRepository;
         $this->modelValidator = $modelValidator;
+    }
+
+    public function getAll()
+    {
+        return $this->recipientRepository->getAll();
+    }
+
+    public function getById(int $id)
+    {
+        $recipient = $this->recipientRepository->getById($id);
+        if ($recipient != null) {
+            return $recipient;
+        }
+
+        throw new ModelNotFoundException();
     }
 
     public function save(Recipient $recipient)

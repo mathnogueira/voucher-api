@@ -20,6 +20,17 @@ abstract class Model
         $this->sealed = true;
     }
 
+    public function toAssocArray()
+    {
+        $assocArray = [];
+        foreach ($this->fields as $field) {
+            $value = isset($this->data[$field]) ? $this->data[$field] : null;
+            $assocArray[$field] = $value;
+        }
+
+        return $assocArray;
+    }
+
     public function __get($name)
     {
         if (in_array($name, $this->fields)) {

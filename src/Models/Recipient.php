@@ -22,5 +22,4 @@ class Recipient extends Model
         $this->email = $email;
         $this->seal();
     }
-
 }
