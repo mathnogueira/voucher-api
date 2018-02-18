@@ -2,13 +2,16 @@
 
 namespace App\Services;
 
-use App\Generators\IVoucherCodeGenerator;
-use App\Repositories\IRecipientRepository;
-use App\Repositories\ISpecialOfferRepository;
-use App\Repositories\IVoucherRepository;
 use App\Models\Voucher;
 use App\Models\Recipient;
 use App\Models\SpecialOffer;
+use App\Repositories\IVoucherRepository;
+use App\Generators\IVoucherCodeGenerator;
+use App\Exceptions\InvalidModelException;
+use App\Repositories\IRecipientRepository;
+use App\Exceptions\ModelNotFoundException;
+use App\Repositories\ISpecialOfferRepository;
+use App\Utils\IClock;
 
 class VoucherService
 {
@@ -16,17 +19,20 @@ class VoucherService
     private $recipientRepository;
     private $specialOfferRepository;
     private $voucherRepository;
+    private $clock;
 
     public function __construct(
         IVoucherCodeGenerator $voucherCodeGenerator,
         IRecipientRepository $recipientRepository,
         ISpecialOfferRepository $specialOfferRepository,
-        IVoucherRepository $voucherRepository
+        IVoucherRepository $voucherRepository,
+        IClock $clock
     ) {
         $this->voucherCodeGenerator = $voucherCodeGenerator;
         $this->recipientRepository = $recipientRepository;
         $this->specialOfferRepository = $specialOfferRepository;
         $this->voucherRepository = $voucherRepository;
+        $this->clock = $clock;
     }
 
     public function generateVouchersForSpecialOffer(string $specialofferCode)
@@ -57,5 +63,33 @@ class VoucherService
         } while ($voucher != null);
 
         return $code;
+    }
+
+    public function useVoucher(string $voucherCode, string $email)
+    {
+        $voucher = $this->voucherRepository->getByCodeAndEmail($voucherCode, $email);
+        $this->validateVoucher($voucher);
+        $specialOffer = $this->specialOfferRepository->getById($voucher->specialOfferId);
+        $voucher->usedAt = $this->clock->now();
+
+        $this->voucherRepository->update($voucher);
+
+        return $specialOffer;
+    }
+
+    private function validateVoucher($voucher)
+    {
+        if ($voucher == null) {
+            throw new ModelNotFoundException();
+        }
+
+        if ($voucher->usedAt != null) {
+            throw new InvalidModelException(['Voucher is used already']);
+        }
+    }
+
+    public function getActiveVouchersByEmail(string $email)
+    {
+        return $this->voucherRepository->getActiveVouchersByEmail($email);
     }
 }

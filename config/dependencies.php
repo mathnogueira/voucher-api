@@ -16,5 +16,8 @@ return [
     'App\Repositories\IVoucherRepository' => object(App\Repositories\VoucherRepository::class),
     
     //Controllers
-    'App\Controllers\VoucherController' => object(App\Controllers\VoucherController::class)
+    'App\Controllers\VoucherController' => object(App\Controllers\VoucherController::class),
+
+    // Utils
+    'App\Utils\IClock' => object(App\Utils\SystemClock::class)
 ];

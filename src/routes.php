@@ -19,3 +19,5 @@ $app->get("$ROUTES_PREFIX/offer/{code}", ['App\Controllers\SpecialOfferControlle
 $app->post("$ROUTES_PREFIX/offer", ['App\Controllers\SpecialOfferController', 'create']);
 
 $app->post("$ROUTES_PREFIX/voucher", ['App\Controllers\VoucherController', 'generateVouchers']);
+$app->post("$ROUTES_PREFIX/voucher/use", ['App\Controllers\VoucherController', 'useVoucher']);
+$app->post("$ROUTES_PREFIX/voucher/active", ['App\Controllers\VoucherController', 'getActiveVouchersForRecipient']);

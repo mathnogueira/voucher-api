@@ -39,6 +39,17 @@ class SpecialOfferRepository implements ISpecialOfferRepository
         return $this->buildSpecialOfferFromRow($row);
     }
 
+    public function getById(int $id)
+    {
+        $sqlConnection = $this->database->getConnection();
+
+        $query = $sqlConnection->prepare("SELECT * FROM special_offer WHERE special_offer_id = :id");
+        $query->execute([':id' => $id]);
+
+        $row = $query->fetch(\PDO::FETCH_OBJ);
+        return $this->buildSpecialOfferFromRow($row);
+    }
+
     private function buildSpecialOfferFromRow($row)
     {
         if (!$row) {
