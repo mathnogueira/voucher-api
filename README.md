@@ -28,7 +28,7 @@ In this section, we are going to discover all endpoints available in this API.
 ```
 GET /api/v1.0/recipient
 ```
-Returns a list of all the existing recipients on the database. Always result in a status `200` response.
+Returns a list of all the existing recipients on the database. Always result in a status `200 OK` response.
 
 ### Get a specific recipient by its id
 ```
@@ -89,3 +89,11 @@ Creates a new special offer. This endpoint can result in two HTTP status:
 ```
 
 The field `code` is the identifier of the special offer.
+
+### Generate vouchers for a special offer
+```
+POST /api/v1.0/voucher
+{
+
+}
+```
