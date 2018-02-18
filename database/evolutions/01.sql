@@ -15,6 +15,7 @@ CREATE TABLE recipient (
 CREATE TABLE special_offer (
     special_offer_id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(128) NOT NULL,
+    code VARCHAR(4) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL UNIQUE,
     discount FLOAT NOT NULL,
 
     PRIMARY KEY (special_offer_id)
@@ -22,7 +23,7 @@ CREATE TABLE special_offer (
 
 CREATE TABLE voucher (
     voucher_id INT NOT NULL AUTO_INCREMENT,
-    code VARCHAR(10) NOT NULL UNIQUE,
+    code VARCHAR(10) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL UNIQUE,
     recipient_id INT NOT NULL,
     special_offer_id INT NOT NULL,
     used_at DATETIME NULL,

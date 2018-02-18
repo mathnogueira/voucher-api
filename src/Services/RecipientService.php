@@ -30,11 +30,11 @@ class RecipientService
     public function getById(int $id)
     {
         $recipient = $this->recipientRepository->getById($id);
-        if ($recipient != null) {
-            return $recipient;
+        if ($recipient == null) {
+            throw new ModelNotFoundException();
         }
-
-        throw new ModelNotFoundException();
+        
+        return $recipient;
     }
 
     public function save(Recipient $recipient)

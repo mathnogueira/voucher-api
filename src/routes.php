@@ -11,6 +11,10 @@ $app->get("/", function (Request $request, Response $response) {
 
 $app->post("$ROUTES_PREFIX/voucher", ['App\Controllers\VoucherController', 'generateVouchers']);
 
-$app->get("$ROUTES_PREFIX/recipient", ['App\Controllers\RecipientController', 'get  All']);
+$app->get("$ROUTES_PREFIX/recipient", ['App\Controllers\RecipientController', 'getAll']);
 $app->get("$ROUTES_PREFIX/recipient/{id}", ['App\Controllers\RecipientController', 'getById']);
 $app->post("$ROUTES_PREFIX/recipient", ['App\Controllers\RecipientController', 'create']);
+
+$app->get("$ROUTES_PREFIX/offer", ['App\Controllers\SpecialOfferController', 'getAll']);
+$app->get("$ROUTES_PREFIX/offer/{code}", ['App\Controllers\SpecialOfferController', 'getByCode']);
+$app->post("$ROUTES_PREFIX/offer", ['App\Controllers\SpecialOfferController', 'create']);

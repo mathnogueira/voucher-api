@@ -6,10 +6,9 @@ use App\Models\Validators;
 
 abstract class Model
 {
-    public $validations = array();
-
     protected $fields = array();
     protected $readonlyFields = array();
+    protected $validations = array();
     protected $data = array();
     
     private $sealed = false;
@@ -47,5 +46,10 @@ abstract class Model
         }
 
         $this->data[$name] = $value;
+    }
+
+    public function getValidations()
+    {
+        return $this->validations;
     }
 }

@@ -6,8 +6,7 @@ class Recipient extends Model
 {
     protected $fields = ['id', 'name', 'email'];
     protected $readonlyFields = ['name', 'email'];
-
-    public $validations = [
+    protected $validations = [
         'name' => [
             ['not empty' => 'The recipient name cannot be empty']
         ],

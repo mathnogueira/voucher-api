@@ -16,7 +16,7 @@ class ModelValidator
     public function validate($model)
     {
         $errors = [];
-        $validationRules = $model->validations;
+        $validationRules = $model->getValidations();
         foreach ($validationRules as $field => $rules) {
             $fieldValue = $model->{$field};
             $fieldErrors = $this->runFieldValidations($fieldValue, $rules);

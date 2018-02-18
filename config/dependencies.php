@@ -5,6 +5,7 @@ use function DI\object;
 return [
     // Generators
     'App\Generators\IVoucherCodeGenerator' => object(App\Generators\VoucherCodeGenerator::class),
+    'App\Generators\ISpecialOfferCodeGenerator' => object(App\Generators\SpecialOfferCodeGenerator::class),
 
     // Services
     'App\Services\VoucherService' => object(App\Services\VoucherService::class),

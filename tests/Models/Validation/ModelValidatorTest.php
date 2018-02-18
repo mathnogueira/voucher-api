@@ -44,7 +44,7 @@ class ModelValidatorTest extends TestCase
 
 class TestModel extends \App\Models\Recipient
 {
-    public $validations = [
+    protected $validations = [
         'name' => [
             ['not empty' => 'Name must contain a value']
         ],

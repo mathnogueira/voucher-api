@@ -4,10 +4,10 @@ namespace App\Models\Validation\Validators;
 
 use App\Models\Validation\IValidator;
 
-class EmailValidator implements IValidator
+class NumericValidator implements IValidator
 {
     public function validate($field)
     {
-        return (bool) filter_var($field, FILTER_VALIDATE_EMAIL);
+        return (bool) preg_match("/\d+(\.\d+)?/", $field);
     }
 }
