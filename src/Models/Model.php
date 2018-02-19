@@ -41,7 +41,8 @@ abstract class Model
 
     public function __set($name, $value)
     {
-        if ($this->sealed && (!in_array($name, $this->fields) || in_array($name, $this->readonlyFields))) {
+
+        if (!in_array($name, $this->fields) || ($this->sealed && in_array($name, $this->readonlyFields))) {
             throw new \Exception("The field \"$name\" is not writable because it is readonly or does not exist");
         }
 

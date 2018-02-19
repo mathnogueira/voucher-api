@@ -8,6 +8,7 @@ use App\Models\SpecialOffer;
 interface RecipientRepositoryInterface
 {
     public function getAll();
+    public function getById(int $id);
     public function getByEmail(string $email);
     public function getAllRecipientsDoesntHaveVoucherFor(SpecialOffer $specialOffer);
 

@@ -21,6 +21,22 @@ class RecipientServiceTest extends TestCase
         $this->recipientService = new RecipientService($this->recipientRepository, $this->modelValidator);
     }
 
+    public function test_when_getting_a_recipient_by_id_and_it_doesnt_exist_should_throw_ModelNotFoundException()
+    {
+        $this->expectException(\App\Exceptions\ModelNotFoundException::class);
+        $this->recipientRepository->method('getById')->willReturn(null);
+
+        $this->recipientService->getById(1);
+    }
+
+    public function test_when_getting_a_recipient_by_id_and_it_exists_should_return_it()
+    {
+        $recipient = new Recipient("Name", "email@co.com");
+        $this->recipientRepository->method('getById')->willReturn($recipient);
+
+        $this->assertEquals($recipient, $this->recipientService->getById(1));
+    }
+
     public function test_when_saving_an_invalid_recipient_should_throw_InvalidModelException()
     {
         $this->expectException(\App\Exceptions\InvalidModelException::class);

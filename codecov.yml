@@ -1,0 +1,5 @@
+ignore:
+  - src/Controllers                                # Controllers dont have any logic
+  - src/Repositories                               # Should be tested by integration tests
+  - src/Generators/SpecialOfferCodeGenerator.php   # Just clue code
+  - src/Generators/VoucherCodeGenerator.php        # Just clue code
