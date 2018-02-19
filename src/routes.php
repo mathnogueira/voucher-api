@@ -20,4 +20,4 @@ $app->post("$ROUTES_PREFIX/offer", ['App\Controllers\SpecialOfferController', 'c
 
 $app->post("$ROUTES_PREFIX/voucher", ['App\Controllers\VoucherController', 'generateVouchers']);
 $app->post("$ROUTES_PREFIX/voucher/use", ['App\Controllers\VoucherController', 'useVoucher']);
-$app->post("$ROUTES_PREFIX/voucher/active", ['App\Controllers\VoucherController', 'getActiveVouchersForRecipient']);
+$app->post("$ROUTES_PREFIX/search/voucher/active", ['App\Controllers\VoucherController', 'getActiveVouchersForRecipient']);

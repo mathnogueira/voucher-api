@@ -27,7 +27,7 @@ class VoucherController
             $numberGeneratedVouchers = $this->voucherService->generateVouchersForSpecialOffer($specialOfferCode);
 
             return $response->withJson([
-                'Created' => $numberGeneratedVouchers,
+                'created' => $numberGeneratedVouchers,
                 'type' => 'Voucher'
             ], 201);
         }, $response);
