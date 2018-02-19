@@ -1,4 +1,7 @@
-# Voucher REST API &middot; [![Build Status](https://travis-ci.org/mathnogueira/voucher-api.svg?branch=master)](https://travis-ci.org/mathnogueira/voucher-api)
+# Voucher REST API &middot; [![Build Status](https://travis-ci.org/mathnogueira/voucher-api.svg?branch=master)](https://travis-ci.org/mathnogueira/voucher-api) [![codecov](https://codecov.io/gh/mathnogueira/voucher-api/branch/master/graph/badge.svg)](https://codecov.io/gh/mathnogueira/voucher-api)
+
+
+
 
 REST API responsible for managing discount vouchers.
 
