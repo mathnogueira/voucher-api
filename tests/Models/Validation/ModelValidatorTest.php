@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use App\Models\Recipient;
 use App\Models\Validation\ModelValidator;
 use App\Models\Validation\ValidatorFactory;
-use App\Models\Validation\IValidator;
+use App\Models\Validation\ValidatorInterface;
 
 class ModelValidatorTest extends TestCase
 {
@@ -14,7 +14,7 @@ class ModelValidatorTest extends TestCase
     {
         
         $validatorFactory = $this->createMock(ValidatorFactory::class);
-        $validator = $this->createMock(IValidator::class);
+        $validator = $this->createMock(ValidatorInterface::class);
 
         // Returns false for the empty name
         $validator

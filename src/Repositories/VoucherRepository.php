@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Utils\Database;
 use App\Models\Voucher;
 
-class VoucherRepository implements IVoucherRepository
+class VoucherRepository implements VoucherRepositoryInterface
 {
     private $database;
 

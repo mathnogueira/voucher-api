@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Utils\Database;
 use App\Models\SpecialOffer;
 
-class SpecialOfferRepository implements ISpecialOfferRepository
+class SpecialOfferRepository implements SpecialOfferRepositoryInterface
 {
     private $database;
 

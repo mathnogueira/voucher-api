@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-interface IClock
+interface ClockInterface
 {
     public function now();
 }

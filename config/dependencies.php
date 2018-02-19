@@ -4,20 +4,20 @@ use function DI\object;
 
 return [
     // Generators
-    'App\Generators\IVoucherCodeGenerator' => object(App\Generators\VoucherCodeGenerator::class),
-    'App\Generators\ISpecialOfferCodeGenerator' => object(App\Generators\SpecialOfferCodeGenerator::class),
+    'App\Generators\VoucherCodeGeneratorInterface' => object(App\Generators\VoucherCodeGenerator::class),
+    'App\Generators\SpecialOfferCodeGeneratorInterface' => object(App\Generators\SpecialOfferCodeGenerator::class),
 
     // Services
     'App\Services\VoucherService' => object(App\Services\VoucherService::class),
 
     // Repositories
-    'App\Repositories\IRecipientRepository' => object(App\Repositories\RecipientRepository::class),
-    'App\Repositories\ISpecialOfferRepository' => object(App\Repositories\SpecialOfferRepository::class),
-    'App\Repositories\IVoucherRepository' => object(App\Repositories\VoucherRepository::class),
+    'App\Repositories\RecipientRepositoryInterface' => object(App\Repositories\RecipientRepository::class),
+    'App\Repositories\SpecialOfferRepositoryInterface' => object(App\Repositories\SpecialOfferRepository::class),
+    'App\Repositories\VoucherRepositoryInterface' => object(App\Repositories\VoucherRepository::class),
     
     //Controllers
     'App\Controllers\VoucherController' => object(App\Controllers\VoucherController::class),
 
     // Utils
-    'App\Utils\IClock' => object(App\Utils\SystemClock::class)
+    'App\Utils\ClockInterface' => object(App\Utils\SystemClock::class)
 ];

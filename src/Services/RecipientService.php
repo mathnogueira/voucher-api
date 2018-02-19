@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\IRecipientRepository;
+use App\Repositories\RecipientRepositoryInterface;
 use App\Models\Recipient;
 use App\Models\Validation\ModelValidator;
 use App\Exceptions\InvalidModelException;
@@ -15,7 +15,7 @@ class RecipientService
     private $modelValidator;
 
     public function __construct(
-        IRecipientRepository $recipientRepository,
+        RecipientRepositoryInterface $recipientRepository,
         ModelValidator $modelValidator
     ) {
         $this->recipientRepository = $recipientRepository;

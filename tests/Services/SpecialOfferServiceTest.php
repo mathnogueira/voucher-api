@@ -8,8 +8,8 @@ use App\Services\SpecialOfferService;
 use App\Models\Validation\ModelValidator;
 use App\Exceptions\InvalidModelException;
 use App\Exceptions\ModelNotFoundException;
-use App\Repositories\ISpecialOfferRepository;
-use App\Generators\ISpecialOfferCodeGenerator;
+use App\Repositories\SpecialOfferRepositoryInterface;
+use App\Generators\SpecialOfferCodeGeneratorInterface;
 
 class SpecialOfferServiceTest extends TestCase
 {
@@ -21,8 +21,8 @@ class SpecialOfferServiceTest extends TestCase
     protected function setUp()
     {
         $this->modelValidator = $this->createMock(ModelValidator::class);
-        $this->specialOfferRepository = $this->createMock(ISpecialOfferRepository::class);
-        $this->codeGenerator = $this->createMock(ISpecialOfferCodeGenerator::class);
+        $this->specialOfferRepository = $this->createMock(SpecialOfferRepositoryInterface::class);
+        $this->codeGenerator = $this->createMock(SpecialOfferCodeGeneratorInterface::class);
         $this->specialOfferService = new SpecialOfferService(
             $this->specialOfferRepository,
             $this->codeGenerator,

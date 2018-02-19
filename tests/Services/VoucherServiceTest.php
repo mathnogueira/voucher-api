@@ -4,14 +4,14 @@ namespace Tests\Services;
 
 use App\Models\Voucher;
 use App\Models\Recipient;
-use App\Utils\IClock;
+use App\Utils\ClockInterface;
 use App\Models\SpecialOffer;
 use PHPUnit\Framework\TestCase;
 use App\Services\VoucherService;
-use App\Repositories\IVoucherRepository;
-use App\Generators\IVoucherCodeGenerator;
-use App\Repositories\IRecipientRepository;
-use App\Repositories\ISpecialOfferRepository;
+use App\Repositories\VoucherRepositoryInterface;
+use App\Generators\VoucherCodeGeneratorInterface;
+use App\Repositories\RecipientRepositoryInterface;
+use App\Repositories\SpecialOfferRepositoryInterface;
 
 class VoucherServiceTest extends TestCase
 {
@@ -25,11 +25,11 @@ class VoucherServiceTest extends TestCase
 
     protected function setUp()
     {
-        $this->codeGenerator = $this->createMock(IVoucherCodeGenerator::class);
-        $this->recipientRepository = $this->createMock(IRecipientRepository::class);
-        $this->specialOfferRepository = $this->createMock(ISpecialOfferRepository::class);
-        $this->voucherRepository = $this->createMock(IVoucherRepository::class);
-        $this->clock = $this->createMock(IClock::class);
+        $this->codeGenerator = $this->createMock(VoucherCodeGeneratorInterface::class);
+        $this->recipientRepository = $this->createMock(RecipientRepositoryInterface::class);
+        $this->specialOfferRepository = $this->createMock(SpecialOfferRepositoryInterface::class);
+        $this->voucherRepository = $this->createMock(VoucherRepositoryInterface::class);
+        $this->clock = $this->createMock(ClockInterface::class);
 
         $this->specialOffer = new SpecialOffer("Black friday", 35);
         $this->specialOffer->id = 1;
@@ -106,7 +106,7 @@ class VoucherServiceTest extends TestCase
 
     private function buildVoucherService()
     {
-        $this->codeGenerator = $this->createMock(IVoucherCodeGenerator::class);
+        $this->codeGenerator = $this->createMock(VoucherCodeGeneratorInterface::class);
 
         $this->voucherService = new VoucherService(
             $this->codeGenerator,

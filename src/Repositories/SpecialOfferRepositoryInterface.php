@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\SpecialOffer;
 
-interface ISpecialOfferRepository
+interface SpecialOfferRepositoryInterface
 {
     public function getAll();
     public function getById(int $id);

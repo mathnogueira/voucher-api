@@ -6,7 +6,7 @@ use App\Models\Recipient;
 use PHPUnit\Framework\TestCase;
 use App\Services\RecipientService;
 use App\Models\Validation\ModelValidator;
-use App\Repositories\IRecipientRepository;
+use App\Repositories\RecipientRepositoryInterface;
 
 class RecipientServiceTest extends TestCase
 {
@@ -17,7 +17,7 @@ class RecipientServiceTest extends TestCase
     protected function setUp()
     {
         $this->modelValidator = $this->createMock(ModelValidator::class);
-        $this->recipientRepository = $this->createMock(IRecipientRepository::class);
+        $this->recipientRepository = $this->createMock(RecipientRepositoryInterface::class);
         $this->recipientService = new RecipientService($this->recipientRepository, $this->modelValidator);
     }
 

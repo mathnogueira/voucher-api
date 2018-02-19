@@ -2,7 +2,7 @@
 
 namespace App\Models\Validation;
 
-interface IValidator
+interface ValidatorInterface
 {
     public function validate($field);
 }

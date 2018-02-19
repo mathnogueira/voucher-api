@@ -2,9 +2,9 @@
 
 namespace App\Models\Validation\Validators;
 
-use App\Models\Validation\IValidator;
+use App\Models\Validation\ValidatorInterface;
 
-class NumericValidator implements IValidator
+class NumericValidator implements ValidatorInterface
 {
     public function validate($field)
     {

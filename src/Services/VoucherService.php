@@ -5,13 +5,13 @@ namespace App\Services;
 use App\Models\Voucher;
 use App\Models\Recipient;
 use App\Models\SpecialOffer;
-use App\Repositories\IVoucherRepository;
-use App\Generators\IVoucherCodeGenerator;
+use App\Repositories\VoucherRepositoryInterface;
+use App\Generators\VoucherCodeGeneratorInterface;
 use App\Exceptions\InvalidModelException;
-use App\Repositories\IRecipientRepository;
+use App\Repositories\RecipientRepositoryInterface;
 use App\Exceptions\ModelNotFoundException;
-use App\Repositories\ISpecialOfferRepository;
-use App\Utils\IClock;
+use App\Repositories\SpecialOfferRepositoryInterface;
+use App\Utils\ClockInterface;
 
 class VoucherService
 {
@@ -22,11 +22,11 @@ class VoucherService
     private $clock;
 
     public function __construct(
-        IVoucherCodeGenerator $voucherCodeGenerator,
-        IRecipientRepository $recipientRepository,
-        ISpecialOfferRepository $specialOfferRepository,
-        IVoucherRepository $voucherRepository,
-        IClock $clock
+        VoucherCodeGeneratorInterface $voucherCodeGenerator,
+        RecipientRepositoryInterface $recipientRepository,
+        SpecialOfferRepositoryInterface $specialOfferRepository,
+        VoucherRepositoryInterface $voucherRepository,
+        ClockInterface $clock
     ) {
         $this->voucherCodeGenerator = $voucherCodeGenerator;
         $this->recipientRepository = $recipientRepository;

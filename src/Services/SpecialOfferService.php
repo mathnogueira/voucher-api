@@ -6,8 +6,8 @@ use App\Models\SpecialOffer;
 use App\Models\Validation\ModelValidator;
 use App\Exceptions\InvalidModelException;
 use App\Exceptions\ModelNotFoundException;
-use App\Repositories\ISpecialOfferRepository;
-use App\Generators\ISpecialOfferCodeGenerator;
+use App\Repositories\SpecialOfferRepositoryInterface;
+use App\Generators\SpecialOfferCodeGeneratorInterface;
 
 class SpecialOfferService
 {
@@ -16,8 +16,8 @@ class SpecialOfferService
     private $modelValidator;
 
     public function __construct(
-        ISpecialOfferRepository $specialOfferRepository,
-        ISpecialOfferCodeGenerator $specialOfferCodeGenerator,
+        SpecialOfferRepositoryInterface $specialOfferRepository,
+        SpecialOfferCodeGeneratorInterface $specialOfferCodeGenerator,
         ModelValidator $modelValidator
     ) {
         $this->specialOfferRepository = $specialOfferRepository;

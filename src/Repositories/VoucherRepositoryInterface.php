@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Voucher;
 
-interface IVoucherRepository
+interface VoucherRepositoryInterface
 {
     public function getByCode(string $code);
     public function getByCodeAndEmail(string $code, string $email);

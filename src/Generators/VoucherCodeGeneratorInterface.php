@@ -2,7 +2,7 @@
 
 namespace App\Generators;
 
-interface IVoucherCodeGenerator
+interface VoucherCodeGeneratorInterface
 {
     public function generate();
 }

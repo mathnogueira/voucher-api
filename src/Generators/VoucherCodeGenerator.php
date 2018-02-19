@@ -4,7 +4,7 @@ namespace App\Generators;
 
 use App\Utils\UniqueStringGenerator;
 
-class VoucherCodeGenerator implements IVoucherCodeGenerator
+class VoucherCodeGenerator implements VoucherCodeGeneratorInterface
 {
     private $uniqueStringGenerator;
     private $voucherCodeLength = 10;

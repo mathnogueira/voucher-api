@@ -6,7 +6,7 @@ use App\Models\Recipient;
 use App\Models\SpecialOffer;
 use App\Utils\Database;
 
-class RecipientRepository implements IRecipientRepository
+class RecipientRepository implements RecipientRepositoryInterface
 {
     private $database;
 

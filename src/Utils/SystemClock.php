@@ -2,7 +2,7 @@
 
 namespace App\Utils;
 
-class SystemClock implements IClock
+class SystemClock implements ClockInterface
 {
     public function now()
     {

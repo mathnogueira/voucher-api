@@ -2,7 +2,7 @@
 
 namespace App\Generators;
 
-interface ISpecialOfferCodeGenerator
+interface SpecialOfferCodeGeneratorInterface
 {
     public function generate();
 }

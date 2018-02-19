@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Recipient;
 use App\Models\SpecialOffer;
 
-interface IRecipientRepository
+interface RecipientRepositoryInterface
 {
     public function getAll();
     public function getByEmail(string $email);

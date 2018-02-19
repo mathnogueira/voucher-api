@@ -4,7 +4,7 @@ namespace App\Generators;
 
 use App\Utils\UniqueStringGenerator;
 
-class SpecialOfferCodeGenerator implements ISpecialOfferCodeGenerator
+class SpecialOfferCodeGenerator implements SpecialOfferCodeGeneratorInterface
 {
     private $uniqueStringGenerator;
     private $codeLength = 4;
