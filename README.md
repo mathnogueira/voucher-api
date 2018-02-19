@@ -27,6 +27,11 @@ Now you are good to go.
 
 In this section, we are going to discover all endpoints available in this API.
 
+If you prefer, you can test the endpoints using the following Postman collection:
+https://www.getpostman.com/collections/b81c06562934b35675b6
+
+However, you have to update the base url (http://localhost/voucher/) for the url where this application is running on your computer.
+
 ### List all recipients
 ```
 GET /api/v1.0/recipient
