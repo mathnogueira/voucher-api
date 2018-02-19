@@ -1,4 +1,5 @@
 ignore:
   - src/Controllers                                # Controllers dont have any logic
   - src/Repositories                               # Should be tested by integration tests
+  - src/Exceptions                                 # Don't contain any application logic
   - src/Generators                                 # Just clue code
