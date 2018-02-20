@@ -119,10 +119,10 @@ Creates a voucher for the special offer identified by the `offerCode` for every 
 POST /api/v1.0/voucher/use
 {
     "email": "myemail@example.com",
-    "voucherCode": "4BcD3FgH1J" // Every code is 10 characters long
+    "voucherCode": "4BcD3FgH1J"
 }
 ```
-Uses the voucher of a special offer. This endpoint will make the voucher invalide after its first use. This endpoint can result in three HTTP status:
+Uses the voucher identified by its 10 characters long code. This endpoint will make the voucher invalide after its first use. This endpoint can result in three HTTP status:
 
 - `404 Not Found` if the voucher does not exist;
 - `400 Bad Request` if the voucher was used before.
