@@ -38,5 +38,4 @@ class NumericValidatorTest extends TestCase
     {
         $this->assertTrue($this->validator->validate("42.4224"));
     }
-
 }
