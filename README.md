@@ -33,19 +33,19 @@ https://www.getpostman.com/collections/b81c06562934b35675b6
 However, you have to update the base url (http://localhost/voucher/) for the url where this application is running on your computer.
 
 ### List all recipients
-```
+```http
 GET /api/v1.0/recipient
 ```
 Returns a list of all the existing recipients on the database. Always result in a status `200 OK` response.
 
 ### Get a specific recipient by its id
-```
+```http
 GET /api/v1.0/recipient/{id}
 ```
 Returns the data of a recipient identified by its id number. Always result in a status `200` response.
 
 ### Register a new recipient
-```
+```http
 POST /api/v1.0/recipient
 {
     "name": "recipient name",
@@ -59,7 +59,7 @@ Creates a new recipient. This endpoint can result in three HTTP status:
 - If everything is ok and the new recipient was created, it will result in a `201 Created` HTTP Response.
 
 ### List all special offers
-```
+```http
 GET /api/v1.0/offer
 ```
 Returns a list of all the existing special offers on database. Always result in a status `200 OK` response containing the following body:
@@ -71,13 +71,13 @@ Returns a list of all the existing special offers on database. Always result in 
 ```
 
 ### Get special offer by code
-```
+```http
 GET /api/v1.0/offer/{code}
 ```
 Returns the data of a special offer using its code as identifier. A offer code is a four character alphanumeric string. Note: Codes are case-sensitive, therefore, `ax7d` is not equal to `Ax7d`.
 
 ### Register a new special offer
-```
+```http
 POST /api/v1.0/offer
 {
     "name": "Black friday",
@@ -99,7 +99,7 @@ Creates a new special offer. This endpoint can result in two HTTP status:
 The field `code` is the identifier of the special offer.
 
 ### Generate vouchers for a special offer
-```
+```http
 POST /api/v1.0/voucher
 {
     "offerCode": "xxxx"
@@ -115,7 +115,7 @@ Creates a voucher for the special offer identified by the `offerCode` for every 
 ```
 
 ### Use a voucher
-```
+```http
 POST /api/v1.0/voucher/use
 {
     "email": "myemail@example.com",
@@ -143,7 +143,7 @@ The `200 OK` response has the following content as its body:
 ```
 
 ### Listing all valid vouchers for a recipient
-```
+```http
 POST /api/1.0/search/voucher/active
 {
     "email": "myemail@example.com"
